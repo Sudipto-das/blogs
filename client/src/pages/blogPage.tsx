@@ -1,4 +1,4 @@
-import Navbar from '../components/navbar';
+
 import PersonalInformation from '../components/personalInformation';
 import Categories from '../components/categories';
 import About from '../components/About';
@@ -7,16 +7,15 @@ import Newsletter from '../components/newsletter';
 import FeatureadPost from '../components/featureadPost';
 import { ArrowRight } from 'lucide-react';
 import BlogPost from '../components/blogPost';
-import { useTheme } from '../context/ThemeContext';
+
 
 const BlogPage = () => {
-    const { theme } = useTheme();
+    
 
     return (
         <div className="min-h-screen bg-background-color">
-            <Navbar />
-
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+           
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-24">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
                     {/* Main Content */}
                     <div className="lg:col-span-3">

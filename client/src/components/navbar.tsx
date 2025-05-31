@@ -1,12 +1,13 @@
 import { Code, Github, Linkedin, Search, Twitter } from "lucide-react"
-
+import { useTheme } from '../context/ThemeContext'
 
 const Navbar = () => {
+  const { theme, toggleTheme } = useTheme();
   
     return (
         <>
           {/* Professional Header */}
-      <header className="bg-background-color shadow-sm ">
+      <header className="bg-background-color shadow-sm fixed top-0 left-0 right-0 z-50 bg-opacity-100 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-8">
@@ -30,6 +31,13 @@ const Navbar = () => {
                 className="pl-10 pr-4 py-2 border border-border-color rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-background-color"
               />
             </div>
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-primary-color text-white"
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+            >
+              {theme === 'light' ? '🌙' : '☀️'}
+            </button>
             <div className="hidden md:flex items-center space-x-2">
               <a href="#" className="p-2 text-gray-600 hover:text-slate-900 transition-colors">
                 <Github className="h-5 w-5" />
