@@ -1,26 +1,32 @@
 import { Award, Calendar, Clock, Heart, MessageCircle, Share2 } from "lucide-react";
+import { useRecoilValue } from "recoil";
+import { blogState } from "../store/blogState";
 
 const FeatureadPost = () => {
-    const featuredPost = {
-        id: 1,
-        title: "My Journey Learning React Server Components: A Deep Dive",
-        excerpt: "After months of working with React Server Components in production, I'm sharing the key insights, challenges, and best practices I've discovered along the way.",
-        author: "Alex Johnson",
-        date: "May 20, 2025",
-        readTime: "12 min read",
-        image: "https://www.womenintech.co.uk/wp-content/uploads/2021/11/Tech-skills-2022-1.png",
-        tags: ["React", "Server Components", "Learning"],
-        likes: 89,
-        comments: 23,
-        category: "Learning Journey"
-    };
+    const { posts, isLoading, error } = useRecoilValue(blogState);
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
+    // Check if posts array exists and has at least one item
+    if (!posts || posts.length === 0) {
+        return <div>No featured posts available</div>;
+    }
+
+    const featuredPost = posts[0];
+    console.log(featuredPost)
     return (
         <div>
             {/* Featured Post */}
             <article className="bg-card-background rounded-xl shadow-sm overflow-hidden mb-8 ">
                 <div className="relative">
                     <img
-                        src={featuredPost.image}
+                        src={featuredPost.image ? `http://localhost:5000/${featuredPost.image}` : "https://placehold.co/600x400/e2e8f0/475569?text=No+Image"}
                         alt={featuredPost.title}
                         className="w-full h-64 sm:h-80 object-cover"
                     />
@@ -33,7 +39,7 @@ const FeatureadPost = () => {
                 </div>
                 <div className="p-8">
                     <div className="flex flex-wrap gap-2 mb-4">
-                        {featuredPost.tags.map((tag, index) => (
+                        {featuredPost.tags?.map((tag, index) => (
                             <span
                                 key={index}
                                 className="bg-primary-color bg-opacity-10 text-primary-color px-3 py-1 rounded-full text-sm font-medium"
@@ -45,9 +51,7 @@ const FeatureadPost = () => {
                     <h2 className="text-3xl font-bold text-text-color mb-4 leading-tight">
                         {featuredPost.title}
                     </h2>
-                    <p className="text-secondary-color mb-6 text-lg leading-relaxed">
-                        {featuredPost.excerpt}
-                    </p>
+
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4 text-sm text-secondary-color">
                             <div className="flex items-center space-x-1">
@@ -76,7 +80,7 @@ const FeatureadPost = () => {
                 </div>
             </article>
         </div>
-    )
-}
+    );
+};
 
 export default FeatureadPost;

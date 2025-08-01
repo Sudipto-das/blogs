@@ -19,9 +19,9 @@ const Categories = () => {
                 <button
                     key={category.name}
                     onClick={() => setActiveCategory(category.name)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    className={`px-4 py-2 rounded-lg font-medium transition-colors border border-[var(--border-primary)] ${
                         activeCategory === category.name
-                            ? 'bg-[var(--primary-color)] text-white'
+                            ? 'bg-[var(--primary-500)] text-white'
                             : 'bg-card-background text-text-color hover:bg-opacity-80 border border-border-color'
                     }`}
                 >

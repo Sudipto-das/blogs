@@ -4,7 +4,7 @@ const About = () => {
     return (
         <>
         {/* About Me */}
-        <div className="bg-card-background rounded-xl shadow-sm p-6 ">
+        <div className="bg-card-base rounded-xl shadow-sm p-6 ">
             <h3 className="text-lg font-bold text-text-color mb-4 flex items-center">
                 <User className="h-5 w-5 mr-2 text-primary-color" />
                 About Me

@@ -16,21 +16,21 @@ export default function BlogPostForm() {
     useBlogForm()
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4 pt-24">
+    <div className="mt-24">
       <div className="mx-auto max-w-4xl">
         <header className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">Create Blog Post</h1>
+          <h1 className="text-3xl font-bold text-color mb-2">Create Blog Post</h1>
           <p className="text-slate-600">Share your thoughts with the world</p>
         </header>
 
-        <Card className="shadow-xl border-0 bg-white/80 backdrop-blur-sm">
+        <Card className="shadow-xl border-0 bg-[var(--background-secondary)] backdrop-blur-sm">
           <CardHeader className="pb-6">
-            <CardTitle className="text-xl text-slate-800">Post Details</CardTitle>
+            <CardTitle className="text-xl text-slate-800 text-color">Post Details</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Title Input */}
             <div className="space-y-2">
-              <Label htmlFor="title" className="text-sm font-medium text-slate-700">
+              <Label htmlFor="title" className="text-sm font-medium text-color">
                 Title
               </Label>
               <Input

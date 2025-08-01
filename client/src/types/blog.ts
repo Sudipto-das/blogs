@@ -1,10 +1,17 @@
 export interface BlogPost {
-    title:string;
-    content:string;
-    tags:string[];
-    image:string|null
-    imageFile:File | null
+    _id: string;
+    title: string;
+    content: string;
+    date: string;
+    readTime: string;
+    image: string;
+    tags: string[];
+    likes: number;
+    comments: number;
+    category: string;
+    createdAt: string;
 }
+
 export interface ImageUploadProps {
     image: string | null
     onImageUpload: (file: File, dataUrl: string) => void

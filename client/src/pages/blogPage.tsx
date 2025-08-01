@@ -1,4 +1,3 @@
-
 import PersonalInformation from '../components/personalInformation';
 import Categories from '../components/categories';
 import About from '../components/About';
@@ -6,15 +5,31 @@ import Skills from '../components/Skills';
 import Newsletter from '../components/newsletter';
 import FeatureadPost from '../components/featureadPost';
 import { ArrowRight } from 'lucide-react';
-import BlogPost from '../components/blogPost';
-
+import PopularPost from '../components/popularPost';
+import BlogPostList from '../components/blogPost';
+import { useEffect, } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { blogState } from '../store/blogState';
+import { blogService } from '../services/blogService';
 
 const BlogPage = () => {
-    
+    const setBlog = useSetRecoilState(blogState);
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
 
+                const data = await blogService.getAllBlogs()
+                setBlog({ posts: data, isLoading: false, error: null });
+            } catch (err) {
+
+                setBlog((prev) => ({ ...prev, isLoading: false, error: "Failed to fetch blog posts" }));
+            }
+        }
+
+        fetchPosts()
+    }, [])
     return (
-        <div className="min-h-screen bg-background-color">
-           
+        <div className="min-h-screen">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-24">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
                     {/* Main Content */}
@@ -25,7 +40,9 @@ const BlogPage = () => {
 
                         <FeatureadPost />
 
-                        <BlogPost />
+                        <BlogPostList />
+
+                        <PopularPost />
 
                         {/* Load More */}
                         <div className="text-center mt-8">
